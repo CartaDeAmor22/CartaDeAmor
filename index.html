@@ -148,7 +148,22 @@ button {
 button:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 18px 45px rgba(255,38,88,.38); }
 
 .letter { display: none; max-width: 900px; margin: 0 auto; padding: 70px 20px 70px; }
-.letter.show { display: block; animation: appear .9s ease both; }
+.letter.show, .letter:target { display: block; animation: appear .9s ease both; }
+
+.open-letter-btn {
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.18);
+  background: linear-gradient(135deg, #ff416f, #d81f51);
+  color: white;
+  padding: 14px 25px;
+  border-radius: 50px;
+  font: 600 14px Poppins, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 12px 35px rgba(255,38,88,.25);
+  transition: .3s ease;
+}
+.open-letter-btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 18px 45px rgba(255,38,88,.38); }
 
 .card {
   position: relative;
@@ -334,7 +349,7 @@ input[type="range"] { accent-color: var(--pink); cursor: pointer; }
       <p class="small">uma carta do meu coração</p>
       <h1>Para Maria Luiza <span>♥</span></h1>
       <p class="subtitle">Tem coisas que são difíceis de explicar... então eu resolvi escrever.</p>
-      <button id="openBtn" type="button">Abrir minha carta 💌</button>
+      <a id="openBtn" class="open-letter-btn" href="#letter">Abrir minha carta 💌</a>
     </section>
 
     <section class="letter" id="letter">
@@ -447,6 +462,7 @@ document.addEventListener("DOMContentLoaded", function () {
       btn.disabled = false;
     }
     setTimeout(function () {
+      window.location.hash = "letter";
       letter.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 100);
   }
