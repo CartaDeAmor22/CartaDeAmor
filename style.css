@@ -1,307 +1,35 @@
 ```css
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --pink: #ff3f72;
-  --pink-light: #ff9ab2;
-  --dark: #10070c;
-  --dark-2: #1a080f;
-  --card: rgba(30, 12, 19, 0.90);
-  --text: #fff5f7;
-  --muted: #e8bfc9;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255, 63, 114, 0.20), transparent 35%),
-    linear-gradient(135deg, #10070c, #210b13 50%, #0b0508);
-  color: var(--text);
-  font-family: "Poppins", sans-serif;
-  overflow-x: hidden;
-}
-
-
 /* =========================
-   TELA INICIAL
-========================= */
-
-.entry-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 20px;
-
-  background: rgba(5, 2, 4, 0.78);
-
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-
-  transition:
-    opacity 0.7s ease,
-    visibility 0.7s ease;
-}
-
-.entry-screen.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.entry-content {
-  width: min(500px, 100%);
-
-  padding: 45px 30px;
-
-  text-align: center;
-
-  border: 1px solid rgba(255, 63, 114, 0.35);
-  border-radius: 28px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(35, 10, 19, 0.96),
-      rgba(15, 5, 10, 0.96)
-    );
-
-  box-shadow:
-    0 25px 80px rgba(0, 0, 0, 0.65),
-    0 0 60px rgba(255, 63, 114, 0.12);
-
-  animation: entryAppear 1s ease;
-}
-
-.entry-heart {
-  color: var(--pink);
-  font-size: 70px;
-  line-height: 1;
-  margin-bottom: 12px;
-
-  animation: heartBeat 1.5s infinite;
-  text-shadow: 0 0 30px rgba(255, 63, 114, 0.5);
-}
-
-.entry-small {
-  color: var(--pink-light);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 4px;
-  margin-bottom: 8px;
-}
-
-.entry-content h2 {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(55px, 10vw, 78px);
-  font-weight: 400;
-  color: #fff;
-  line-height: 1;
-  margin-bottom: 20px;
-}
-
-.entry-description {
-  color: var(--muted);
-  font-size: 15px;
-  margin-bottom: 28px;
-}
-
-.start-btn {
-  border: none;
-  outline: none;
-
-  padding: 14px 30px;
-
-  border-radius: 999px;
-
-  color: white;
-  background: linear-gradient(135deg, #ff315f, #ff174f);
-
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 10px 30px rgba(255, 30, 80, 0.30);
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.start-btn:hover {
-  transform: translateY(-3px) scale(1.03);
-
-  box-shadow:
-    0 15px 40px rgba(255, 30, 80, 0.45);
-}
-
-.start-btn:active {
-  transform: scale(0.97);
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-  min-height: 100vh;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 100px 20px;
-
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: "";
-
-  position: absolute;
-  width: 500px;
-  height: 500px;
-
-  border-radius: 50%;
-
-  background: rgba(255, 40, 90, 0.12);
-
-  filter: blur(100px);
-
-  top: 15%;
-  left: 50%;
-
-  transform: translateX(-50%);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-
-  width: min(850px, 100%);
-
-  text-align: center;
-}
-
-.top-text {
-  display: block;
-
-  color: var(--pink-light);
-
-  font-size: 12px;
-  font-weight: 600;
-
-  letter-spacing: 5px;
-  text-transform: uppercase;
-
-  margin-bottom: 20px;
-}
-
-.hero h1 {
-  font-family: "Great Vibes", cursive;
-
-  font-size: clamp(65px, 11vw, 120px);
-
-  font-weight: 400;
-
-  line-height: 0.95;
-
-  text-shadow:
-    0 10px 50px rgba(0, 0, 0, 0.45);
-}
-
-.hero h1 span {
-  color: var(--pink);
-  font-size: 0.55em;
-}
-
-.hero p {
-  max-width: 600px;
-
-  margin: 30px auto;
-
-  color: var(--muted);
-
-  font-size: 16px;
-  line-height: 1.8;
-}
-
-.open-btn {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  outline: none;
-
-  padding: 15px 28px;
-
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.07);
-
-  color: white;
-
-  font-family: "Poppins", sans-serif;
-
-  font-size: 15px;
-  font-weight: 500;
-
-  cursor: pointer;
-
-  transition: 0.3s;
-}
-
-.open-btn:hover {
-  background: rgba(255, 63, 114, 0.18);
-
-  border-color: rgba(255, 63, 114, 0.5);
-
-  transform: translateY(-2px);
-}
-
-
-/* =========================
-   CARTA
+   CAIXA DA CARTA
 ========================= */
 
 .letter-section {
+  width: 100%;
   padding: 40px 20px 180px;
 }
 
 .letter {
   width: min(850px, 100%);
-
   margin: 0 auto;
 
-  background: var(--card);
+  /* CAIXA */
+  background: linear-gradient(
+    145deg,
+    rgba(35, 10, 19, 0.97),
+    rgba(16, 6, 11, 0.97)
+  );
 
-  border: 1px solid rgba(255, 63, 114, 0.18);
-
+  border: 1px solid rgba(255, 63, 114, 0.28);
   border-radius: 28px;
 
+  /* SOMBRA DA CAIXA */
   box-shadow:
-    0 30px 100px rgba(0, 0, 0, 0.45);
+    0 25px 80px rgba(0, 0, 0, 0.55),
+    0 0 50px rgba(255, 63, 114, 0.08);
 
   overflow: hidden;
 
+  /* Animação */
   opacity: 0;
   transform: translateY(40px);
 
@@ -318,36 +46,49 @@ body {
   pointer-events: auto;
 }
 
-.letter-header {
-  padding: 45px 50px 30px;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+/* =========================
+   CABEÇALHO DA CAIXA
+========================= */
+
+.letter-header {
+  padding: 40px 50px 28px;
+
+  background: rgba(255, 63, 114, 0.035);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .name {
   font-family: "Great Vibes", cursive;
 
   font-size: 58px;
-
-  color: #fff;
+  font-weight: 400;
 
   line-height: 1;
+
+  color: #ffffff;
 }
 
 .cry-message {
   display: block;
 
-  margin-top: 10px;
+  margin-top: 12px;
 
-  color: var(--pink-light);
+  color: #ff9ab2;
 
   font-size: 13px;
 
   font-style: italic;
 }
 
+
+/* =========================
+   TEXTO DENTRO DA CAIXA
+========================= */
+
 .letter-body {
-  padding: 40px 50px 55px;
+  padding: 42px 50px 50px;
 }
 
 .letter-body p {
@@ -360,28 +101,71 @@ body {
   margin-bottom: 25px;
 }
 
-.divider {
-  text-align: center;
 
-  color: var(--pink);
+/* =========================
+   DIVISOR
+========================= */
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  color: #ff3f72;
 
   font-size: 25px;
 
-  margin: 35px 0;
+  margin: 40px 0;
 }
 
+.divider::before,
+.divider::after {
+  content: "";
+
+  height: 1px;
+
+  width: 100px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 63, 114, 0.35)
+  );
+}
+
+.divider::after {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 63, 114, 0.35),
+    transparent
+  );
+}
+
+
+/* =========================
+   ASSINATURA
+========================= */
+
 .signature {
-  margin-top: 45px;
+  margin-top: 50px;
+
+  padding-top: 25px;
 
   text-align: right;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .signature p {
   margin-bottom: 5px;
+
+  color: #d8adb7;
 }
 
 .signature strong {
-  color: var(--pink-light);
+  color: #ff9ab2;
 
   font-family: "Great Vibes", cursive;
 
@@ -392,368 +176,38 @@ body {
 
 
 /* =========================
-   CORAÇÕES
-========================= */
-
-.hearts {
-  position: fixed;
-
-  inset: 0;
-
-  z-index: 1;
-
-  pointer-events: none;
-
-  overflow: hidden;
-}
-
-.heart {
-  position: absolute;
-
-  bottom: -30px;
-
-  color: rgba(255, 63, 114, 0.35);
-
-  animation:
-    floatHeart linear forwards;
-}
-
-@keyframes floatHeart {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-
-  10% {
-    opacity: 0.7;
-  }
-
-  90% {
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: translateY(-110vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-
-/* =========================
-   PLAYER
-========================= */
-
-.music-player {
-  position: fixed;
-
-  left: 50%;
-  bottom: 18px;
-
-  transform: translateX(-50%);
-
-  z-index: 100;
-
-  width: min(950px, calc(100% - 30px));
-
-  display: flex;
-  align-items: center;
-  gap: 15px;
-
-  padding: 12px 15px;
-
-  border-radius: 20px;
-
-  background: rgba(18, 7, 12, 0.94);
-
-  border: 1px solid rgba(255, 63, 114, 0.2);
-
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-
-  box-shadow:
-    0 15px 50px rgba(0, 0, 0, 0.5);
-}
-
-.track-cover {
-  width: 48px;
-  height: 48px;
-
-  flex-shrink: 0;
-
-  border-radius: 12px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 63, 114, 0.35),
-      rgba(255, 63, 114, 0.05)
-    );
-
-  background-size: cover;
-  background-position: center;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: var(--pink);
-
-  font-size: 20px;
-}
-
-.track-info {
-  min-width: 0;
-  flex: 1;
-}
-
-.music-label {
-  display: block;
-
-  color: var(--pink-light);
-
-  font-size: 8px;
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
-
-  margin-bottom: 2px;
-}
-
-.track-info strong {
-  display: block;
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  font-size: 13px;
-}
-
-.progress-wrap {
-  display: flex;
-
-  align-items: center;
-
-  gap: 7px;
-
-  margin-top: 4px;
-}
-
-.progress-wrap span {
-  color: #bd8d98;
-
-  font-size: 9px;
-}
-
-.progress-wrap input {
-  flex: 1;
-
-  min-width: 50px;
-}
-
-.music-controls {
-  display: flex;
-
-  align-items: center;
-
-  gap: 5px;
-}
-
-.control {
-  width: 34px;
-  height: 34px;
-
-  border: none;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.06);
-
-  color: white;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.control:hover {
-  background: rgba(255, 63, 114, 0.2);
-}
-
-.control.play {
-  background: var(--pink);
-
-  font-size: 12px;
-}
-
-.volume-area {
-  display: flex;
-
-  align-items: center;
-
-  gap: 6px;
-}
-
-.volume-area input {
-  width: 70px;
-}
-
-
-/* RANGE */
-
-input[type="range"] {
-  appearance: none;
-  -webkit-appearance: none;
-
-  height: 4px;
-
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.15);
-
-  cursor: pointer;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  appearance: none;
-  -webkit-appearance: none;
-
-  width: 12px;
-  height: 12px;
-
-  border-radius: 50%;
-
-  background: var(--pink);
-
-  cursor: pointer;
-}
-
-input[type="range"]::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
-
-  border: none;
-
-  border-radius: 50%;
-
-  background: var(--pink);
-
-  cursor: pointer;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-  padding: 20px 20px 120px;
-
-  text-align: center;
-
-  color: #9f737e;
-
-  font-size: 12px;
-}
-
-
-/* =========================
-   ANIMAÇÕES
-========================= */
-
-@keyframes entryAppear {
-  from {
-    opacity: 0;
-    transform: translateY(25px) scale(0.96);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes heartBeat {
-  0%, 100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.12);
-  }
-}
-
-
-/* =========================
-   RESPONSIVO
+   CELULAR
 ========================= */
 
 @media (max-width: 700px) {
 
-  .entry-content {
-    padding: 38px 22px;
+  .letter-section {
+    padding: 25px 14px 160px;
   }
 
-  .entry-content h2 {
-    font-size: 58px;
-  }
-
-  .entry-heart {
-    font-size: 58px;
-  }
-
-  .hero {
-    padding: 80px 20px;
-  }
-
-  .hero h1 {
-    font-size: 68px;
-  }
-
-  .top-text {
-    letter-spacing: 3px;
+  .letter {
+    border-radius: 22px;
   }
 
   .letter-header {
-    padding: 35px 25px 25px;
+    padding: 32px 24px 25px;
   }
 
   .letter-body {
-    padding: 30px 25px 40px;
+    padding: 30px 24px 40px;
   }
 
   .name {
     font-size: 48px;
   }
 
+  .cry-message {
+    font-size: 12px;
+  }
+
   .letter-body p {
     font-size: 14px;
     line-height: 1.9;
-  }
-
-  .music-player {
-    width: calc(100% - 20px);
-
-    bottom: 10px;
-
-    gap: 9px;
-
-    padding: 9px;
-  }
-
-  .track-cover {
-    width: 42px;
-    height: 42px;
-  }
-
-  .volume-area {
-    display: none;
-  }
-
-  .control {
-    width: 30px;
-    height: 30px;
   }
 
   .signature {
@@ -763,5 +217,6 @@ footer {
   .signature strong {
     font-size: 28px;
   }
+
 }
 ```
