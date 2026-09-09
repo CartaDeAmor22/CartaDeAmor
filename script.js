@@ -26,6 +26,11 @@ setInterval(createHeart, 650);
 // =========================
 startBtn.addEventListener("click", () => {
   entryScreen.classList.add("hidden");
+
+  setTimeout(() => {
+    entryScreen.remove();
+  }, 800);
+
   loadTrack(0, true);
 });
 
