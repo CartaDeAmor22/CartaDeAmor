@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap');
-
-:root {
-  --red: #e5092f;
-  --pink: #ff3155;
-  --dark: #080808;
-  --dark2: #120408;
-  --white: #ffffff;
-  --muted: #c9bfc2;
-}
-
+```css
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+:root {
+  --pink: #ff3f72;
+  --pink-light: #ff9ab2;
+  --dark: #10070c;
+  --dark-2: #1a080f;
+  --card: rgba(30, 12, 19, 0.90);
+  --text: #fff5f7;
+  --muted: #e8bfc9;
 }
 
 html {
@@ -21,14 +21,14 @@ html {
 
 body {
   min-height: 100vh;
-  color: var(--white);
-  font-family: 'Poppins', sans-serif;
   background:
-    radial-gradient(circle at 50% 0%, rgba(229, 9, 47, 0.22), transparent 35%),
-    radial-gradient(circle at 10% 80%, rgba(255, 49, 85, 0.08), transparent 30%),
-    linear-gradient(135deg, #050505, #120407 50%, #050505);
+    radial-gradient(circle at 50% 0%, rgba(255, 63, 114, 0.20), transparent 35%),
+    linear-gradient(135deg, #10070c, #210b13 50%, #0b0508);
+  color: var(--text);
+  font-family: "Poppins", sans-serif;
   overflow-x: hidden;
 }
+
 
 /* =========================
    TELA INICIAL
@@ -37,14 +37,26 @@ body {
 .entry-screen {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 99999;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: opacity 0.8s ease, visibility 0.8s ease;
+
+  padding: 20px;
+
+  background: rgba(5, 2, 4, 0.78);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transition:
+    opacity 0.7s ease,
+    visibility 0.7s ease;
 }
 
 .entry-screen.hidden {
@@ -54,270 +66,330 @@ body {
 }
 
 .entry-content {
-  width: min(90%, 500px);
+  width: min(500px, 100%);
+
   padding: 45px 30px;
+
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border: 1px solid rgba(255, 63, 114, 0.35);
   border-radius: 28px;
-  background: rgba(10, 10, 10, 0.72);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(35, 10, 19, 0.96),
+      rgba(15, 5, 10, 0.96)
+    );
+
   box-shadow:
-    0 0 60px rgba(229, 9, 47, 0.18),
-    0 20px 80px rgba(0, 0, 0, 0.5);
+    0 25px 80px rgba(0, 0, 0, 0.65),
+    0 0 60px rgba(255, 63, 114, 0.12);
+
   animation: entryAppear 1s ease;
 }
 
 .entry-heart {
-  color: var(--red);
-  font-size: 55px;
-  margin-bottom: 10px;
-  animation: heartbeat 1.5s infinite;
-  text-shadow: 0 0 25px rgba(229, 9, 47, 0.8);
+  color: var(--pink);
+  font-size: 70px;
+  line-height: 1;
+  margin-bottom: 12px;
+
+  animation: heartBeat 1.5s infinite;
+  text-shadow: 0 0 30px rgba(255, 63, 114, 0.5);
 }
 
 .entry-small {
-  color: #aaa;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  color: var(--pink-light);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin-bottom: 8px;
 }
 
 .entry-content h2 {
-  margin: 8px 0;
-  color: white;
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(48px, 8vw, 72px);
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(55px, 10vw, 78px);
   font-weight: 400;
-  text-shadow: 0 0 25px rgba(255, 49, 85, 0.25);
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 20px;
 }
 
-.entry-content > p:not(.entry-small) {
+.entry-description {
   color: var(--muted);
-  font-size: 14px;
-  margin: 10px 0 25px;
+  font-size: 15px;
+  margin-bottom: 28px;
 }
 
 .start-btn {
   border: none;
-  padding: 14px 35px;
+  outline: none;
+
+  padding: 14px 30px;
+
   border-radius: 999px;
+
   color: white;
-  background: linear-gradient(135deg, #b80025, #ff3155);
-  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff315f, #ff174f);
+
+  font-family: "Poppins", sans-serif;
   font-size: 15px;
   font-weight: 600;
+
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(229, 9, 47, 0.35);
-  transition: 0.3s ease;
+
+  box-shadow:
+    0 10px 30px rgba(255, 30, 80, 0.30);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .start-btn:hover {
   transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 15px 40px rgba(229, 9, 47, 0.5);
+
+  box-shadow:
+    0 15px 40px rgba(255, 30, 80, 0.45);
 }
 
 .start-btn:active {
   transform: scale(0.97);
 }
 
+
 /* =========================
    HERO
 ========================= */
 
-main {
-  position: relative;
-  z-index: 1;
-}
-
 .hero {
   min-height: 100vh;
+
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 100px 20px 160px;
+
+  padding: 100px 20px;
+
   position: relative;
+  overflow: hidden;
 }
 
-.glow {
+.hero::before {
+  content: "";
+
   position: absolute;
   width: 500px;
   height: 500px;
+
   border-radius: 50%;
-  background: rgba(229, 9, 47, 0.13);
+
+  background: rgba(255, 40, 90, 0.12);
+
   filter: blur(100px);
-  pointer-events: none;
+
+  top: 15%;
+  left: 50%;
+
+  transform: translateX(-50%);
 }
 
-.small {
+.hero-content {
   position: relative;
-  color: #aaa;
+  z-index: 2;
+
+  width: min(850px, 100%);
+
+  text-align: center;
+}
+
+.top-text {
+  display: block;
+
+  color: var(--pink-light);
+
   font-size: 12px;
-  letter-spacing: 4px;
+  font-weight: 600;
+
+  letter-spacing: 5px;
   text-transform: uppercase;
-  margin-bottom: 10px;
+
+  margin-bottom: 20px;
 }
 
 .hero h1 {
-  position: relative;
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(65px, 10vw, 115px);
+  font-family: "Great Vibes", cursive;
+
+  font-size: clamp(65px, 11vw, 120px);
+
   font-weight: 400;
-  line-height: 1;
-  margin-bottom: 20px;
-  text-shadow: 0 0 35px rgba(229, 9, 47, 0.25);
+
+  line-height: 0.95;
+
+  text-shadow:
+    0 10px 50px rgba(0, 0, 0, 0.45);
 }
 
 .hero h1 span {
-  color: var(--red);
+  color: var(--pink);
+  font-size: 0.55em;
 }
 
-.subtitle {
-  position: relative;
+.hero p {
   max-width: 600px;
+
+  margin: 30px auto;
+
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.7;
-  margin-bottom: 30px;
+
+  font-size: 16px;
+  line-height: 1.8;
 }
 
-#openBtn {
-  position: relative;
-  border: 1px solid rgba(255, 49, 85, 0.5);
+.open-btn {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  outline: none;
+
+  padding: 15px 28px;
+
   border-radius: 999px;
-  padding: 14px 30px;
+
+  background: rgba(255, 255, 255, 0.07);
+
   color: white;
-  background: rgba(229, 9, 47, 0.12);
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 15px;
+  font-weight: 500;
+
   cursor: pointer;
-  transition: 0.3s ease;
+
+  transition: 0.3s;
 }
 
-#openBtn:hover {
-  background: rgba(229, 9, 47, 0.28);
+.open-btn:hover {
+  background: rgba(255, 63, 114, 0.18);
+
+  border-color: rgba(255, 63, 114, 0.5);
+
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(229, 9, 47, 0.2);
 }
+
 
 /* =========================
    CARTA
 ========================= */
 
+.letter-section {
+  padding: 40px 20px 180px;
+}
+
 .letter {
-  display: none;
-  max-width: 950px;
+  width: min(850px, 100%);
+
   margin: 0 auto;
-  padding: 0 20px 180px;
+
+  background: var(--card);
+
+  border: 1px solid rgba(255, 63, 114, 0.18);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.45);
+
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(40px);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .letter.show {
-  display: block;
-  animation: letterAppear 1s ease;
-}
-
-.card {
-  position: relative;
-  padding: clamp(30px, 6vw, 70px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 28px;
-  background: rgba(15, 15, 15, 0.82);
-  box-shadow:
-    0 25px 100px rgba(0, 0, 0, 0.55),
-    0 0 60px rgba(229, 9, 47, 0.07);
-}
-
-.seal {
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  color: white;
-  background: linear-gradient(135deg, #b80025, #ff3155);
-  box-shadow: 0 10px 30px rgba(229, 9, 47, 0.35);
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .letter-header {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 35px;
+  padding: 45px 50px 30px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .name {
-  color: white;
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(45px, 7vw, 70px);
+  font-family: "Great Vibes", cursive;
+
+  font-size: 58px;
+
+  color: #fff;
+
   line-height: 1;
 }
 
 .cry-message {
-  padding: 8px 15px;
-  border: 1px solid rgba(255, 49, 85, 0.35);
-  border-radius: 999px;
-  color: #ff8da2;
-  background: rgba(229, 9, 47, 0.08);
-  font-size: 12px;
+  display: block;
+
+  margin-top: 10px;
+
+  color: var(--pink-light);
+
+  font-size: 13px;
+
+  font-style: italic;
 }
 
-.second-note,
-.future-note {
-  color: #ddd;
-  font-size: 15px;
-  line-height: 2;
+.letter-body {
+  padding: 40px 50px 55px;
 }
 
-.second-note p,
-.future-note p {
-  margin-bottom: 22px;
-}
+.letter-body p {
+  color: #f6dce2;
 
-.second-note p:first-child,
-.future-note > p:first-of-type {
-  color: white;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.future-note {
-  margin-top: 45px;
-  padding: 30px;
-  border-left: 2px solid var(--red);
-  border-radius: 0 20px 20px 0;
-  background: rgba(229, 9, 47, 0.05);
-}
-
-.mini-heart {
-  color: var(--red);
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
-.ending {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-top: 50px;
-  padding-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.ending span {
-  color: #aaa;
-  font-size: 14px;
-}
-
-.ending strong {
-  color: #ff617b;
   font-size: 16px;
+
+  line-height: 2;
+
+  margin-bottom: 25px;
 }
+
+.divider {
+  text-align: center;
+
+  color: var(--pink);
+
+  font-size: 25px;
+
+  margin: 35px 0;
+}
+
+.signature {
+  margin-top: 45px;
+
+  text-align: right;
+}
+
+.signature p {
+  margin-bottom: 5px;
+}
+
+.signature strong {
+  color: var(--pink-light);
+
+  font-family: "Great Vibes", cursive;
+
+  font-size: 32px;
+
+  font-weight: 400;
+}
+
 
 /* =========================
    CORAÇÕES
@@ -325,65 +397,108 @@ main {
 
 .hearts {
   position: fixed;
+
   inset: 0;
+
+  z-index: 1;
+
   pointer-events: none;
+
   overflow: hidden;
-  z-index: 0;
 }
 
 .heart {
   position: absolute;
+
   bottom: -30px;
-  color: rgba(255, 49, 85, 0.35);
-  font-size: 15px;
-  animation: floatHeart linear forwards;
+
+  color: rgba(255, 63, 114, 0.35);
+
+  animation:
+    floatHeart linear forwards;
 }
 
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.7;
+  }
+
+  90% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
 /* =========================
-   PLAYER DE MÚSICA
+   PLAYER
 ========================= */
 
 .music-player {
   position: fixed;
-  z-index: 5000;
+
   left: 50%;
   bottom: 18px;
+
   transform: translateX(-50%);
-  width: min(940px, calc(100% - 30px));
-  min-height: 80px;
+
+  z-index: 100;
+
+  width: min(950px, calc(100% - 30px));
+
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 12px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  padding: 12px 15px;
+
   border-radius: 20px;
-  background: rgba(10, 10, 10, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+
+  background: rgba(18, 7, 12, 0.94);
+
+  border: 1px solid rgba(255, 63, 114, 0.2);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  box-shadow:
+    0 15px 50px rgba(0, 0, 0, 0.5);
 }
 
 .track-cover {
-  width: 55px;
-  height: 55px;
-  min-width: 55px;
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 63, 114, 0.35),
+      rgba(255, 63, 114, 0.05)
+    );
+
+  background-size: cover;
+  background-position: center;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #30000a, #e5092f);
-  box-shadow: 0 5px 20px rgba(229, 9, 47, 0.2);
-}
 
-.track-cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  color: var(--pink);
 
-.track-cover span {
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .track-info {
@@ -393,108 +508,155 @@ main {
 
 .music-label {
   display: block;
-  color: #888;
-  font-size: 9px;
-  letter-spacing: 1.5px;
+
+  color: var(--pink-light);
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
   margin-bottom: 2px;
 }
 
 .track-info strong {
   display: block;
-  overflow: hidden;
-  color: white;
-  font-size: 13px;
-  font-weight: 500;
-  text-overflow: ellipsis;
+
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-size: 13px;
 }
 
 .progress-wrap {
   display: flex;
+
   align-items: center;
-  gap: 8px;
-  margin-top: 6px;
+
+  gap: 7px;
+
+  margin-top: 4px;
 }
 
 .progress-wrap span {
-  color: #888;
+  color: #bd8d98;
+
   font-size: 9px;
-  min-width: 28px;
 }
 
-.progress-wrap span:last-child {
-  text-align: right;
-}
-
-#progress {
+.progress-wrap input {
   flex: 1;
-  height: 3px;
-  cursor: pointer;
-  accent-color: var(--pink);
+
+  min-width: 50px;
 }
 
 .music-controls {
   display: flex;
+
   align-items: center;
+
   gap: 5px;
 }
 
 .control {
-  width: 35px;
-  height: 35px;
+  width: 34px;
+  height: 34px;
+
   border: none;
+
   border-radius: 50%;
-  color: #ddd;
-  background: transparent;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: white;
+
   cursor: pointer;
-  transition: 0.2s ease;
+
+  transition: 0.2s;
 }
 
 .control:hover {
-  color: white;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 63, 114, 0.2);
 }
 
 .control.play {
-  width: 42px;
-  height: 42px;
-  color: white;
-  background: linear-gradient(135deg, #b80025, #ff3155);
-  box-shadow: 0 5px 20px rgba(229, 9, 47, 0.3);
-}
+  background: var(--pink);
 
-.control.play:hover {
-  transform: scale(1.08);
+  font-size: 12px;
 }
 
 .volume-area {
   display: flex;
+
   align-items: center;
-  gap: 7px;
-  width: 100px;
+
+  gap: 6px;
 }
 
-.volume-area span {
-  font-size: 14px;
+.volume-area input {
+  width: 70px;
 }
 
-#volume {
-  width: 75px;
-  height: 3px;
+
+/* RANGE */
+
+input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+
+  height: 4px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.15);
+
   cursor: pointer;
-  accent-color: var(--pink);
 }
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+
+  background: var(--pink);
+
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: var(--pink);
+
+  cursor: pointer;
+}
+
 
 /* =========================
    FOOTER
 ========================= */
 
 footer {
-  padding: 0 20px 130px;
+  padding: 20px 20px 120px;
+
   text-align: center;
-  color: #666;
-  font-size: 11px;
+
+  color: #9f737e;
+
+  font-size: 12px;
 }
+
 
 /* =========================
    ANIMAÇÕES
@@ -503,28 +665,16 @@ footer {
 @keyframes entryAppear {
   from {
     opacity: 0;
-    transform: scale(0.92);
+    transform: translateY(25px) scale(0.96);
   }
 
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0) scale(1);
   }
 }
 
-@keyframes letterAppear {
-  from {
-    opacity: 0;
-    transform: translateY(35px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes heartbeat {
+@keyframes heartBeat {
   0%, 100% {
     transform: scale(1);
   }
@@ -534,109 +684,84 @@ footer {
   }
 }
 
-@keyframes floatHeart {
-  from {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-
-  15% {
-    opacity: 1;
-  }
-
-  to {
-    transform: translateY(-110vh) rotate(360deg);
-    opacity: 0;
-  }
-}
 
 /* =========================
-   CELULAR
+   RESPONSIVO
 ========================= */
 
-@media (max-width: 720px) {
-  .hero {
-    padding-bottom: 140px;
-  }
+@media (max-width: 700px) {
 
-  .letter {
-    padding-bottom: 170px;
-  }
-
-  .letter-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .music-player {
-    flex-wrap: wrap;
-    padding: 12px;
-  }
-
-  .track-info {
-    min-width: calc(100% - 75px);
-  }
-
-  .music-controls {
-    margin-left: auto;
-  }
-
-  .volume-area {
-    width: 100%;
-    justify-content: center;
-  }
-
-  #volume {
-    width: 130px;
-  }
-}
-
-@media (max-width: 480px) {
   .entry-content {
-    padding: 35px 20px;
+    padding: 38px 22px;
   }
 
   .entry-content h2 {
-    font-size: 52px;
+    font-size: 58px;
+  }
+
+  .entry-heart {
+    font-size: 58px;
+  }
+
+  .hero {
+    padding: 80px 20px;
   }
 
   .hero h1 {
-    font-size: 65px;
+    font-size: 68px;
   }
 
-  .card {
-    padding: 35px 22px;
+  .top-text {
+    letter-spacing: 3px;
   }
 
-  .second-note,
-  .future-note {
+  .letter-header {
+    padding: 35px 25px 25px;
+  }
+
+  .letter-body {
+    padding: 30px 25px 40px;
+  }
+
+  .name {
+    font-size: 48px;
+  }
+
+  .letter-body p {
     font-size: 14px;
     line-height: 1.9;
   }
 
-  .future-note {
-    padding: 20px;
-  }
-
   .music-player {
     width: calc(100% - 20px);
+
     bottom: 10px;
+
+    gap: 9px;
+
+    padding: 9px;
   }
 
   .track-cover {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .volume-area {
+    display: none;
   }
 
   .control {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
   }
 
-  .control.play {
-    width: 38px;
-    height: 38px;
+  .signature {
+    text-align: center;
+  }
+
+  .signature strong {
+    font-size: 28px;
   }
 }
+```
