@@ -334,7 +334,7 @@ input[type="range"] { accent-color: var(--pink); cursor: pointer; }
       <p class="small">uma carta do meu coração</p>
       <h1>Para Maria Luiza <span>♥</span></h1>
       <p class="subtitle">Tem coisas que são difíceis de explicar... então eu resolvi escrever.</p>
-      <button id="openBtn" type="button" onclick="openLetter()">Abrir minha carta 💌</button>
+      <button id="openBtn" type="button">Abrir minha carta 💌</button>
     </section>
 
     <section class="letter" id="letter">
@@ -432,19 +432,35 @@ input[type="range"] { accent-color: var(--pink); cursor: pointer; }
 
   <footer>feito com amor, especialmente para Maria Luiza ♥</footer>
   <script>
-const btn = document.getElementById("openBtn");
-const letter = document.getElementById("letter");
-const entryScreen = document.getElementById("entryScreen");
-const startBtn = document.getElementById("startBtn");
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("openBtn");
+  const letter = document.getElementById("letter");
+  const entryScreen = document.getElementById("entryScreen");
+  const startBtn = document.getElementById("startBtn");
 
-function openLetter() {
-  if (!letter) return;
-  letter.classList.add("show");
-  if (btn) btn.textContent = "Minha carta ❤️";
-  setTimeout(() => {
-    letter.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, 150);
-}
+  function openLetter() {
+    if (!letter) return;
+    letter.style.display = "block";
+    letter.classList.add("show");
+    if (btn) {
+      btn.textContent = "Minha carta ❤️";
+      btn.disabled = false;
+    }
+    setTimeout(function () {
+      letter.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
+  }
+
+  if (btn) {
+    btn.addEventListener("click", openLetter);
+  }
+
+  if (startBtn) {
+    startBtn.addEventListener("click", function () {
+      if (entryScreen) entryScreen.classList.add("hidden");
+      if (typeof loadTrack === "function") loadTrack(0, true);
+    });
+  }
 
 function createHeart() {
   const heart = document.createElement("div");
@@ -461,10 +477,6 @@ setInterval(createHeart, 650);
 // =========================
 // TELA INICIAL + INÍCIO DA MÚSICA
 // =========================
-startBtn.addEventListener("click", () => {
-  entryScreen.classList.add("hidden");
-  loadTrack(0, true);
-});
 
 // =========================
 // PLAYER DE MÚSICA
@@ -571,6 +583,7 @@ document.addEventListener("keydown", (event) => {
 
 loadTrack(0);
 
+});
 </script>
 </body>
 </html>
