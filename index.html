@@ -334,7 +334,7 @@ input[type="range"] { accent-color: var(--pink); cursor: pointer; }
       <p class="small">uma carta do meu coração</p>
       <h1>Para Maria Luiza <span>♥</span></h1>
       <p class="subtitle">Tem coisas que são difíceis de explicar... então eu resolvi escrever.</p>
-      <button id="openBtn">Abrir minha carta 💌</button>
+      <button id="openBtn" type="button" onclick="openLetter()">Abrir minha carta 💌</button>
     </section>
 
     <section class="letter" id="letter">
@@ -437,11 +437,14 @@ const letter = document.getElementById("letter");
 const entryScreen = document.getElementById("entryScreen");
 const startBtn = document.getElementById("startBtn");
 
-btn.addEventListener("click", () => {
+function openLetter() {
+  if (!letter) return;
   letter.classList.add("show");
-  btn.textContent = "Minha carta ❤️";
-  setTimeout(() => letter.scrollIntoView({ behavior: "smooth" }), 100);
-});
+  if (btn) btn.textContent = "Minha carta ❤️";
+  setTimeout(() => {
+    letter.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 150);
+}
 
 function createHeart() {
   const heart = document.createElement("div");
